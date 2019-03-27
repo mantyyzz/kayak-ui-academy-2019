@@ -13,7 +13,38 @@
     />
   </head>
   <body>
-    <div id="app" class="page-wrapper"></div>
+    <div id="app" class="page-wrapper">
+      <header class="page-header">
+        <div class="container">
+          <div class="content-wrapper">
+            header content
+          </div>
+        </div>
+      </header>
+      <div class="page-content container">
+        <aside class="aside">
+          <div class="container">
+            <div class="content-wrapper">
+              aside content
+            </div>
+          </div>
+        </aside>
+        <main class="main">
+          <div class="container">
+            <div class="content-wrapper">
+              main content
+            </div>
+          </div>
+        </main>
+      </div>
+      <footer class="page-footer">
+        <div class="container">
+          <div class="content-wrapper">
+            footer content
+          </div>
+        </div>
+      </footer>
+    </div>
     <script src="<%= htmlWebpackPlugin.files.chunks.movies.entry %>"></script>
   </body>
 </html>
