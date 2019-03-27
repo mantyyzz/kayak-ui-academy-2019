@@ -1,5 +1,6 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -58,7 +59,28 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+    new BrowserSyncPlugin(
+      {
+        host: 'localhost',
+        port: 3001,
+        proxy: 'http://localhost:8080/',
+        files: [
+          {
+            match: ['**/*.hbs'],
+            fn: function(event, file) {
+              if (event === 'change') {
+                const bs = require('browser-sync').get('bs-webpack-plugin');
+                bs.reload();
+              }
+            }
+          }
+        ]
+      },
+      {
+        reload: false
+      }
+    )
   ],
   cache: true
 };
