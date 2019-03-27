@@ -1,9 +1,10 @@
 @import 'styles/variables/all';
 @import 'styles/global/all';
-@import 'styles/elements/all';
 @import 'styles/layout.scss';
 
 // UI components
+@import 'styles/components/mixins.scss';
+@import 'styles/components/input.scss';
 
 :global {
   #app {
